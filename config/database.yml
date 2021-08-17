@@ -6,20 +6,20 @@ default: &default
 
 development: &development
   <<: *default
-  database: app_development
-  host: <%= ENV['DATABASE_HOST'] %>
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  port: <%= ENV['DATABASE_PORT'] %>
+  database: infra_app_development
+  host: <%= ENV['MYSQL_HOST'] %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  port: <%= ENV['MYSQL_PORT'] %>
 
 test:
   <<: *development
-  database: app_test
+  database: infra_app_test
 
 production:
   <<: *default
-  database: rails_infra_test_app
-  host: <%= ENV['DATABASE_HOST'] %>
-  port: <%= ENV['DATABASE_PORT'] %>
-  username: <%= ENV['RAILS_INFRA_TEST_APP_DATABASE_USERNAME'] %>
-  password: <%= ENV['RAILS_INFRA_TEST_APP_DATABASE_PASSWORD'] %>
+  database: infra_app
+  host: <%= ENV['MYSQL_HOST'] %>
+  port: <%= ENV['MYSQL_PORT'] %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
