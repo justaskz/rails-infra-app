@@ -188,7 +188,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    sidekiq (6.2.1)
+    sidekiq (6.4.0)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
@@ -241,7 +241,7 @@ DEPENDENCIES
   redis (~> 4.4)
   rspec-its
   rspec-rails
-  sidekiq (~> 6.2)
+  sidekiq (~> 6.4)
   sidekiq-cron
   sidekiq-failures
   sidekiq-throttled
