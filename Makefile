@@ -1,14 +1,31 @@
 test:
 	@ bundle exec spring rspec
 
-setup:
-	@ bash scripts/setup
+# setup:
+# 	@ bash scripts/setup
+#
+# server:
+# 	@ bash scripts/server
+#
+# sidekiq:
+# 	@ bash scripts/sidekiq
+#
+# console:
+# 	@ bash scripts/console
 
-server:
-	@ bash scripts/server
+build:
+	@ docker-compose build
 
-sidekiq:
-	@ bash scripts/sidekiq
+up:
+	@ docker-compose up -d
 
-console:
-	@ bash scripts/console
+down:
+	@ docker-compose down
+
+rebuild: down build up connect
+
+clear:
+	@ docker rmi
+
+connect:
+	@ docker-compose exec infra_test_app bash

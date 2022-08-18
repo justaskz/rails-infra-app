@@ -1,37 +1,44 @@
 ---
-version: '3.7'
-
 services:
-  app:
+  infra_test_app:
+    container_name: infra_test_app
+    image: infra_test_app
+    hostname: infra_test_app
     build: .
-    container_name: app
-    image: app
-    command: bash scripts/server
+    # command: bash scripts/server
+    # command: bash
+    tty: true
+    stdin_open: true
     volumes:
       - .:/app
       - bundler:/usr/local/bundle
-    depends_on:
-      - redis
     ports:
-      - '3000:3000'
+      - "3000:3000"
+    networks:
+      - infra_default
+    # depends_on:
+    #   - redis
 
-  sidekiq:
-    container_name: sidekiq
-    image: app
-    command: bash scripts/sidekiq
-    volumes:
-      - .:/app
-      - bundler:/usr/local/bundle
-    depends_on:
-      - redis
+  # sidekiq:
+  #   container_name: infra-test-app_sidekiq
+  #   image: app
+  #   command: bash scripts/sidekiq
+  #   volumes:
+  #     - .:/app
+  #     - bundler:/usr/local/bundle
+  #   depends_on:
+  #     - redis
 
-  redis:
-    container_name: redis
-    image: redis:6.0.4
-    volumes:
-      - redis:/data
-    ports:
-      - '6379:6379'
+  # redis:
+  #   container_name: infra-test-app_redis
+  #   image: redis:6.0.4
+  #   volumes:
+  #     - redis:/data
+  #   ports:
+  #     - '6379:6379'
+networks:
+  infra_default:
+     external: true
 
 volumes:
   bundler:
