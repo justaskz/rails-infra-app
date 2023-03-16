@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-source .env
+bash scripts/setup
+
+rm -f tmp/pids/server.pid
 bundle exec rails server --binding 0.0.0.0 -p 3000
