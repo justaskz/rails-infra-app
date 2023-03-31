@@ -11,6 +11,7 @@ development: &development
   username: <%= Services::Env::Mysql.username %>
   password: <%= Services::Env::Mysql.password %>
   port: <%= Services::Env::Mysql.port %>
+  timeout: 1000 # milliseconds
 
 test:
   <<: *development
