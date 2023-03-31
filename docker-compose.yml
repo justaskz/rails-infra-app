@@ -4,7 +4,9 @@ services:
     container_name: infra_test_app
     image: infra_test_app
     hostname: infra-test-app
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     command: bash scripts/server
     tty: true
     stdin_open: true

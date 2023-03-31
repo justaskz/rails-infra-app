@@ -7,10 +7,10 @@ default: &default
 development: &development
   <<: *default
   database: infra_app_development
-  host: <%= ENV['MYSQL_HOST'] %>
-  username: <%= ENV['MYSQL_USERNAME'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
-  port: <%= ENV['MYSQL_PORT'] %>
+  host: <%= Services::Env::Mysql.host %>
+  username: <%= Services::Env::Mysql.username %>
+  password: <%= Services::Env::Mysql.password %>
+  port: <%= Services::Env::Mysql.port %>
 
 test:
   <<: *development
