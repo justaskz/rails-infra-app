@@ -1,12 +1,22 @@
-<div><%= link_to 'Sidekiq', '/sidekiq' %></div>
+<div style="margin-bottom: 20px">
+  <div style="display: inline-block"><%= link_to 'Home', root_path %></div>
+  <div style="display: inline-block"><%= link_to 'App', stats_path %></div>
+  <div style="display: inline-block"><%= link_to 'Sidekiq', sidekiq_web_path %></div>
+</div>
 
-<%= form_with(url: workers_path(action_type: :create)) do %>
-  <%= submit_tag 'Spawn Create worker' %>
-<% end %>
+<div style="margin-bottom: 10px">
+  <div style="display: inline-block;">
+    <%= form_with(url: workers_path(action_type: :create)) do %>
+      <%= submit_tag 'Spawn Create worker' %>
+    <% end %>
+  </div>
 
-<%= form_with(url: workers_path(action_type: :update)) do %>
-  <%= submit_tag 'Spawn Update worker' %>
-<% end %>
+  <div style="display: inline-block;">
+    <%= form_with(url: workers_path(action_type: :update)) do %>
+      <%= submit_tag 'Spawn Update worker' %>
+    <% end %>
+  </div>
+</div>
 
 <div>Records: <%= Record.count %></div>
 <div>Create Workers: <%= App.redis.hget(:worker_count, :create) || 0 %></div>
