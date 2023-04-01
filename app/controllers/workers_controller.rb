@@ -5,7 +5,7 @@ class WorkersController < ApplicationController
     Records::Create::Worker.perform_async(worker_id) if action_type == 'create'
     Records::Update::Worker.perform_async(worker_id) if action_type == 'update'
 
-    redirect_to(root_path)
+    redirect_to(stats_path)
   end
 
   def destroy

@@ -35,7 +35,7 @@ services:
 
   redis:
     container_name: infra_test_app-redis
-    image: redis:6.0.4
+    image: redis:6.2-bullseye
     volumes:
       - redis:/data
     networks:
