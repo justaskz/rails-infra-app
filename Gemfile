@@ -6,7 +6,7 @@ gem 'bootsnap', '~> 1.7', require: false
 gem 'dotenv-rails'
 gem 'lean_interactor'
 gem 'mysql2', '~> 0.5.3'
-gem 'puma', '~> 5.4'
+gem 'puma', '~> 5.6'
 gem 'rails', '~> 6.1'
 gem 'redis', '~> 4.4'
 gem 'sidekiq', '~> 6.4'
