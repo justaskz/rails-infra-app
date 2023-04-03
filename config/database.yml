@@ -7,10 +7,10 @@ default: &default
 development: &development
   <<: *default
   database: infra_app_development
-  host: <%= Services::Env::Mysql.host %>
-  username: <%= Services::Env::Mysql.username %>
-  password: <%= Services::Env::Mysql.password %>
-  port: <%= Services::Env::Mysql.port %>
+  host: <%= Services::Mysql::Env.host %>
+  username: <%= Services::Mysql::Env.username %>
+  password: <%= Services::Mysql::Env.password %>
+  port: <%= Services::Mysql::Env.port %>
   timeout: 1000 # milliseconds
 
 test:

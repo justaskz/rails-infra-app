@@ -1,4 +1,4 @@
-module Services::Env::Mysql
+module Services::Mysql::Env
   module_function
 
   def host
@@ -18,6 +18,6 @@ module Services::Env::Mysql
   end
 
   def port
-    3306
+    ENV.fetch('MYSQL_PORT', 3306)
   end
 end

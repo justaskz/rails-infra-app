@@ -17,10 +17,10 @@ build:
 	@ docker-compose build
 
 up:
-	@ docker-compose up -d
+	@ docker-compose --env-file .docker.env up -d
 
 down:
-	@ docker-compose down
+	@ docker-compose --env-file .docker.env down
 
 rebuild: down build up connect
 
