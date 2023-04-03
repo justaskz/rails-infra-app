@@ -8,6 +8,8 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     command: bash scripts/server
+    env_file:
+      - .dev.env
     tty: true
     stdin_open: true
     volumes:
@@ -46,11 +48,13 @@ services:
   db:
     container_name: infra_test_app-mysql
     image: mysql:8.0
+    env_file:
+      - .dev.env
     environment:
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: admin
     volumes:
       - mysql:/var/lib/mysql
     ports:
