@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
+source .env.dev
+
 bundle install
 bundle exec sidekiq

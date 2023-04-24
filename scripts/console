@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
+source .env.dev
+
 bundle exec rails console

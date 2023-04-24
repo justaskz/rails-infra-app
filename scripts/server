@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source .env.dev
+
 bash scripts/setup
 
 rm -f tmp/pids/server.pid
