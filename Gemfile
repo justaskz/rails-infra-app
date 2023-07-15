@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '~> 2.7'
 
 gem 'bootsnap', '~> 1.7', require: false
+gem 'cassandra-driver'
 gem 'dotenv-rails'
 gem 'lean_interactor'
 gem 'mysql2', '~> 0.5.3'
