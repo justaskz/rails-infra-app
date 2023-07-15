@@ -45,4 +45,7 @@ Rails.application.configure do
   # config.logger = Logger.new('log/development.log')
   # config.logger.level = Logger::ERROR
   config.log_level = :error
+
+  # do not check for pending migrations
+  config.active_record.migration_error = false
 end
