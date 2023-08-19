@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 
-source .env.dev
-
 bundle install
 bundle exec rails db:migrate

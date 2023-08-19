@@ -1,31 +1,30 @@
 ---
 services:
-  infra_test_app:
-    container_name: infra_test_app
-    image: infra_test_app
-    hostname: infra-test-app
+  rails:
+    container_name: infra-app__rails
+    image: infra-app
+    hostname: infra-app
     build:
       context: .
-      dockerfile: Dockerfile.dev
-    command: bash scripts/server
+      dockerfile: Dockerfile
     env_file:
-      - .env.dev
+      - .env
     tty: true
     stdin_open: true
     volumes:
       - .:/app
       - bundler:/usr/local/bundle
     ports:
-      - "3000:3000"
+      - "${RAILS_PORT}:${RAILS_PORT}"
     networks:
       - infra_default
     depends_on:
-      - db
+      - mysql
       - sidekiq
 
   sidekiq:
-    container_name: infra_test_app-sidekiq
-    image: infra_test_app
+    container_name: infra-app__sidekiq
+    image: infra-app
     command: bash scripts/sidekiq
     volumes:
       - .:/app
@@ -36,20 +35,18 @@ services:
       - redis
 
   redis:
-    container_name: infra_test_app-redis
-    image: redis:6.2-bullseye
+    container_name: infra-app__redis
+    image: redis:7.2
     volumes:
       - redis:/data
     networks:
       - infra_default
-    ports:
-      - '6379:6379'
 
-  db:
-    container_name: infra_test_app-mysql
-    image: mysql:8.0
+  mysql:
+    container_name: infra-app__mysql
+    image: mysql:8.1
     env_file:
-      - .env.dev
+      - .env
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -57,10 +54,14 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mysql:/var/lib/mysql
-    ports:
-      - "3306:3306"
     networks:
       - infra_default
+
+  # cassandra:
+  #   container_name: infra-app__cassandra
+  #   image: cassandra:4.1
+  #   volumes:
+  #     - cassandra:/var/
 
 networks:
   infra_default:

@@ -1,31 +1,55 @@
 test:
 	@ bundle exec spring rspec
 
-setup:
-	@ bash scripts/setup
+#################################################
+## DOCKER
+#################################################
+docker_build:
+	@ docker build -t infra-app:latest -f Dockerfile.prod .
 
-server:
-	@ bash scripts/server
+docker_run:
+	@ docker run -it --rm --name infra-app__rails -p 3000:3000 infra-app
 
-sidekiq:
-	@ bash scripts/sidekiq
-
-console:
-	@ bash scripts/console
-
-build:
+#################################################
+## DOCKER COMPOSE
+#################################################
+dc_build:
 	@ docker-compose build
 
-up:
-	@ docker-compose --env-file .docker.env up -d
+dc_up:
+	@ docker-compose up -d
 
-down:
-	@ docker-compose --env-file .docker.env down
+dc_down:
+	@ docker-compose down
 
-rebuild: down build up connect
+dc_rebuild: dc_down dc_build dc_up
 
-clear:
-	@ docker rmi
 
-connect:
-	@ docker-compose exec infra_test_app bash
+# setup:
+# 	@ bash scripts/setup
+
+# server:
+# 	@ bash scripts/server
+
+# sidekiq:
+# 	@ bash scripts/sidekiq
+
+# console:
+# 	@ bash scripts/console
+
+# build:
+# 	@ docker-compose build
+
+# up:
+# 	@ docker-compose --env-file .docker.env up -d
+
+# down:
+# 	@ docker-compose --env-file .docker.env down
+
+# rebuild: down build up connect
+
+# clear:
+# 	@ docker rmi
+
+# connect:
+# 	@ docker-compose exec infra_test_app bash
