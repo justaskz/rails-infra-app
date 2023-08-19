@@ -1,5 +1,0 @@
-FROM ruby:2.7.8-bullseye
-COPY . /app
-WORKDIR /app
-RUN apt update && apt install -y default-mysql-client iproute2
-VOLUME /app
