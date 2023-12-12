@@ -1,5 +1,8 @@
 # README
 
+Supported environments:
+`docker` - docker-compose
+
 Before launching, make sure that `.env` is present and defines these variables:
 ```bash
 #!/usr/bin/env bash
