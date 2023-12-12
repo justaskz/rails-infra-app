@@ -19,9 +19,6 @@ services:
       - "${RAILS_PORT}:${RAILS_PORT}"
     networks:
       - infra_default
-    depends_on:
-      - mysql
-      - sidekiq
 
   sidekiq:
     container_name: infra-app__sidekiq
@@ -32,8 +29,6 @@ services:
       - bundler:/usr/local/bundle
     networks:
       - infra_default
-    depends_on:
-      - redis
 
   redis:
     container_name: infra-app__redis
