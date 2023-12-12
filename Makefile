@@ -23,7 +23,10 @@ dc_down:
 	@ docker-compose --env-file=.env.docker down
 
 dc_connect:
-	@ docker-compose --env-file=.env.docker exec infra-app__rails bash
+	@ docker-compose --env-file=.env.docker exec rails bash
+
+dc_logs:
+	@ docker-compose --env-file=.env.docker logs
 
 dc_rebuild: dc_down dc_build dc_up
 

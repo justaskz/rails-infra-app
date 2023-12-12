@@ -8,11 +8,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: tail -f /dev/null
     tty: true
     stdin_open: true
     volumes:
       - .:/app
-      - bundler:/usr/local/bundle
     environment:
       RAILS_PORT: ${RAILS_PORT}
     ports:
@@ -26,7 +26,6 @@ services:
     command: bash scripts/sidekiq
     volumes:
       - .:/app
-      - bundler:/usr/local/bundle
     networks:
       - infra_default
 
@@ -61,7 +60,6 @@ networks:
   infra_default:
 
 volumes:
-  bundler:
   redis:
   mysql:
   cassandra:
