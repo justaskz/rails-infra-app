@@ -1,4 +1,5 @@
 ---
+version: "3.9"
 services:
   rails:
     container_name: infra-app__rails
@@ -7,13 +8,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file:
-      - .env
     tty: true
     stdin_open: true
     volumes:
       - .:/app
       - bundler:/usr/local/bundle
+    environment:
+      RAILS_PORT: ${RAILS_PORT}
     ports:
       - "${RAILS_PORT}:${RAILS_PORT}"
     networks:
@@ -45,8 +46,6 @@ services:
   mysql:
     container_name: infra-app__mysql
     image: mysql:8.1
-    env_file:
-      - .env
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -57,11 +56,11 @@ services:
     networks:
       - infra_default
 
-  # cassandra:
-  #   container_name: infra-app__cassandra
-  #   image: cassandra:4.1
-  #   volumes:
-  #     - cassandra:/var/
+  cassandra:
+    container_name: infra-app__cassandra
+    image: cassandra:4.1
+    volumes:
+      - cassandra:/var/
 
 networks:
   infra_default:
@@ -70,3 +69,4 @@ volumes:
   bundler:
   redis:
   mysql:
+  cassandra:
