@@ -8,7 +8,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: bash scripts/server
     environment:
       RAILS_PORT: ${RAILS_PORT}
       MYSQL_HOST: ${MYSQL_HOST}
@@ -25,6 +24,10 @@ services:
       - "${RAILS_PORT}:${RAILS_PORT}"
     networks:
       - infra_default
+    depends_on:
+      - mysql
+      - redis
+      - cassandra
 
   sidekiq:
     container_name: infra-app__sidekiq

@@ -4,6 +4,23 @@
   <div style="display: inline-block"><%= link_to 'Sidekiq', sidekiq_web_path %></div>
 </div>
 
-<div>MySQL: <%= Services::Mysql.status %></div>
-<div>Redis: <%= Services::Redis.status %></div>
-<div>Cassandra: <%= Services::Cassandra.status %></div>
+<div style="margin-bottom: 20px">
+  <b>Server hostname:</b> <%= @hostname %>
+</div>
+
+<div>
+  <b>MySQL:</b>
+  <%= Services::Mysql.status %>
+</div>
+
+<div>
+  <b>MySQL schema:</b> <%= @schema_status %>
+</div>
+
+<div>
+  <b>Redis:</b> <%= Services::Redis.status %>
+</div>
+
+<div>
+  <b>Cassandra:</b> <%= Services::Cassandra.status %>
+</div>
