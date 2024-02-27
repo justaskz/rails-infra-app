@@ -1,4 +1,5 @@
 * TASKS
+  [ ] Find a way how to pass ENV vars without listing them in docker-compose.yml
   [ ] Implement stop button
   [ ] Implement flush button
   [X] Implement count for Create workers
