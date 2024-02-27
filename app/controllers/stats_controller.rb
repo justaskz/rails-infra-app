@@ -9,6 +9,6 @@ class StatsController < ApplicationController
   def schema_status
     Record.count && 'available'
   rescue
-    'unavailable'
+    'not available'
   end
 end
