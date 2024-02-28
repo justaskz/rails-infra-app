@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '~> 2.7'
+ruby '~> 3.3'
 
 gem 'bootsnap', '~> 1.7', require: false
 gem 'cassandra-driver'
