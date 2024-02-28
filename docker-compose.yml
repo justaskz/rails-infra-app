@@ -8,6 +8,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: bash scripts/server
     environment:
       RAILS_PORT: ${RAILS_PORT}
       MYSQL_HOST: ${MYSQL_HOST}
