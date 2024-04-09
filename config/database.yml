@@ -7,7 +7,7 @@ default: &default
 
 development: &development
   <<: *default
-  database: infra_app_development
+  database: <%= Services::Mysql::Env.database %>
   host: <%= Services::Mysql::Env.host %>
   username: <%= Services::Mysql::Env.username %>
   password: <%= Services::Mysql::Env.password %>
