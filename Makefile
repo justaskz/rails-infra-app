@@ -4,31 +4,31 @@ test:
 ##################################################
 ## DOCKER
 ##################################################
-docker_build:
-	@ docker build -t infra-app:latest -f Dockerfile.prod .
+# docker_build:
+# 	@ docker build -t infra-app:latest -f Dockerfile.prod .
 
-docker_run:
-	@ docker run -it --rm --name infra-app__rails -p 3000:3000 --env-file=.env.docker infra-app
+# docker_run:
+# 	@ docker run -it --rm --name infra-app__rails -p 3000:3000 --env-file=.env.docker infra-app
 
 ##################################################
 ## DOCKER COMPOSE
 ##################################################
-dc_build:
-	@ docker-compose --env-file=.env.docker build
+build:
+	@ docker-compose build
 
-dc_up:
-	@ docker-compose --env-file=.env.docker up -d
+up:
+	@ docker-compose up -d
 
-dc_down:
-	@ docker-compose --env-file=.env.docker down
+down:
+	@ docker-compose down
 
-dc_connect:
-	@ docker-compose --env-file=.env.docker exec rails bash
+connect:
+	@ docker-compose exec rails bash
 
-dc_logs:
-	@ docker-compose --env-file=.env.docker logs
+logs:
+	@ docker-compose logs
 
-dc_rebuild: dc_down dc_build dc_up
+rebuild: dc_down dc_build dc_up
 
 
 

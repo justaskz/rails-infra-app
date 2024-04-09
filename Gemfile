@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '~> 3.3'
-
 gem 'bootsnap', '~> 1.7', require: false
 gem 'cassandra-driver'
 gem 'dotenv-rails'
