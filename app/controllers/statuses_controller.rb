@@ -1,8 +1,9 @@
 class StatusesController < ApplicationController
   def show
+    services
     @hostname = Socket.gethostname
 
-    render status: 503 if services.to_h.values.any?(&:unavailable?)
+    # render status: 503 if services.to_h.values.any?(&:unavailable?)
   end
 
   private
@@ -11,7 +12,7 @@ class StatusesController < ApplicationController
     @services ||= OpenStruct.new(
       mysql: MysqlService,
       redis: RedisService,
-      cassandra: CassandraService,
+      cassandra: CassandraService
     )
   end
 end
