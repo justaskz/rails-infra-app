@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  root 'stats#status'
+  root 'statuses#show'
 
-  resources :stats, only: [:index]
+  resources :statuses, only: [:show]
   resources :workers, only: %i[create destroy]
+
+  # resources :stats, only: [:index]
 
   mount Sidekiq::Web => '/sidekiq'
 end

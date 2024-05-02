@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'bootsnap', '~> 1.7', require: false
-gem 'cassandra-driver'
+gem 'cassandra-driver', '~> 3.2'
 gem 'dotenv-rails'
 gem 'lean_interactor'
-gem 'mysql2', '~> 0.5.3'
+gem 'mysql2', '~> 0.5'
 gem 'puma', '~> 5.6'
 gem 'rails', '~> 6.1'
 gem 'redis', '~> 4.4'
@@ -14,10 +14,13 @@ gem 'sidekiq-cron'
 gem 'sidekiq-failures'
 gem 'sidekiq-throttled'
 
+gem 'sorted_set'
+
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'bullet'
+  # gem 'better_errors-pry'
+  # gem 'binding_of_caller'
+  # gem 'bullet'
   gem 'listen'
 end
 

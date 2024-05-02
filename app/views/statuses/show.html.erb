@@ -1,0 +1,19 @@
+<div style="margin-bottom: 20px">
+  <b>Server hostname:</b> <%= @hostname %>
+</div>
+
+<div>
+  <b>MySQL:</b> <%= @services.mysql.status %>
+</div>
+
+<div>
+  <b>MySQL schema:</b> <%= @services.mysql.schema_status %>
+</div>
+
+<div>
+  <b>Redis:</b> <%= @services.redis.status %>
+</div>
+
+<div>
+  <b>Cassandra:</b> <%= @services.cassandra.status %>
+</div>
