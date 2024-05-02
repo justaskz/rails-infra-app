@@ -7,8 +7,8 @@ class StatsController < ApplicationController
   private
 
   def schema_status
-    Record.count && 'available'
-  rescue
-    'not available'
+    Record.count && Services::AVAILABLE
+  rescue StandardError
+    Services::UNAVAILABLE
   end
 end
