@@ -1,12 +1,11 @@
 ---
-version: "3.9"
 services:
   rails:
     container_name: infra-app__rails
     image: infra-app
     hostname: infra-app
-    build: .
-    # command: tail -f /dev/null
+    build:
+      target: development
     volumes:
       - .:/app
     ports:
@@ -26,22 +25,27 @@ services:
   redis:
     container_name: infra-app__redis
     image: redis:7.2
-    volumes:
-      - redis:/data
+    # volumes:
+    #   - redis:/data
 
   mysql:
     container_name: infra-app__mysql
     image: mysql:8.3
-    volumes:
-      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    # volumes:
+    #   - mysql:/var/lib/mysql
 
   cassandra:
     container_name: infra-app__cassandra
     image: cassandra:4.1
-    volumes:
-      - cassandra:/var/
+    # volumes:
+    #   - cassandra:/var/
 
-volumes:
-  redis:
-  mysql:
-  cassandra:
+# volumes:
+#   redis:
+#   mysql:
+#   cassandra:
