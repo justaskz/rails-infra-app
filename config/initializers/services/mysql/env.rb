@@ -14,7 +14,7 @@ module Services::Mysql::Env
   end
 
   def database
-    ENV.fetch('MYSQL_DATABASE', 'infra_app_development')
+    ENV.fetch('MYSQL_DATABASE', 'infra_app')
   end
 
   def port
