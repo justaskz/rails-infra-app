@@ -20,6 +20,9 @@ jobs:
         run: |
           docker build --tag infra-app:latest .
 
+      - name: Tag image
+        run: docker tag infra-app:latest registry.infra.net/infra-app:latest
+
       - name: Push image to registry
         run: |
           docker push registry.infra.net/infra-app:latest
