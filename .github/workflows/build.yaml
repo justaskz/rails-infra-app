@@ -1,11 +1,27 @@
 ---
 name: build
+
 on:
-  - push
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
 jobs:
-  build:
+  docker_build:
+    name: Build Docker image
     runs-on: self-hosted
     steps:
-      - run: pwd
-      - run: whoami
-      - run: ls
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get latest commit hash
+        run: echo "::set-output name=commit_hash::$(git rev-parse --short HEAD)"
+
+      - name: Build Docker image
+        run: |
+          docker build --tag infra-app:latest --tag infra-app:${{ steps.get_commit_hash.outputs.commit_hash }} .
+
+      - name: Push image to registry
+        run: |
+          docker push registry.infra.net/infra-app:latest registry.infra.net/infra-app:${{ steps.get_commit_hash.outputs.commit_hash }}
