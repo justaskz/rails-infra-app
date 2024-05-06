@@ -1,0 +1,11 @@
+---
+name: build
+on:
+  - push
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - run: pwd
+      - run: whoami
+      - run: ls
