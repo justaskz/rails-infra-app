@@ -2,7 +2,9 @@
 name: build
 
 on:
-  push
+  push:
+    branches:
+      - master
 
 jobs:
   docker_build:
@@ -12,17 +14,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # - name: Get latest commit hash
-      #   run: echo "::set-output name=commit_hash::$(git rev-parse --short HEAD)"
-
       - name: Build Docker image
-          # docker build --tag infra-app:latest --tag infra-app:${{ steps.get_commit_hash.outputs.commit_hash }} .
-        run: |
-          docker build --tag infra-app:latest .
+        run: docker build --tag infra-app:latest .
 
       - name: Tag image
         run: docker tag infra-app:latest registry.infra.net/infra-app:latest
 
       - name: Push image to registry
-        run: |
-          docker push registry.infra.net/infra-app:latest
+        run: docker push registry.infra.net/infra-app:latest

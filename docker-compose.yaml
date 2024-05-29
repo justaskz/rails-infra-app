@@ -2,7 +2,7 @@
 services:
   rails:
     container_name: infra-app__rails
-    image: infra-app
+    image: infra-app__rails
     hostname: infra-app
     build:
       target: development
