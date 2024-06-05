@@ -34,8 +34,8 @@ rebuild: dc_down dc_build dc_up
 
 release:
 	@ docker build -t infra-app:latest -f Dockerfile .
-	@ docker tag infra-app:latest 0.0.0.0:8888/infra-app
-	@ docker push 0.0.0.0:8888/infra-app
+	@ docker tag infra-app:latest registry.infra.net/infra-app
+	@ docker push registry.infra.net/infra-app
 
 # setup:
 # 	@ bash scripts/setup
