@@ -1,6 +1,4 @@
 ---
-name: build
-
 on:
   push:
     branches:

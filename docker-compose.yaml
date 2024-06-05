@@ -10,21 +10,19 @@ services:
       - .:/app
     ports:
       - "${RAILS_PORT}:${RAILS_PORT}"
-    depends_on:
-      - mysql
-      - redis
-      - cassandra
 
   sidekiq:
     container_name: infra-app__sidekiq
-    image: infra-app
+    image: infra-app__rails
     command: bash scripts/sidekiq
     volumes:
       - .:/app
+    depends_on:
+      - redis
 
   redis:
     container_name: infra-app__redis
-    image: redis:7.2
+    image: redis:7
     # volumes:
     #   - redis:/data
 
@@ -36,8 +34,11 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    # volumes:
-    #   - mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    volumes:
+      # - mysql:/var/lib/mysql
+      - ./scripts/setup_db.sql:/docker-entrypoint-initdb.d/setup_db.sql
 
   cassandra:
     container_name: infra-app__cassandra

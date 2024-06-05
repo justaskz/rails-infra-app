@@ -1,0 +1,5 @@
+GRANT PROCESS ON *.* TO app@"%";
+GRANT INSERT,SELECT,UPDATE,DELETE,ALTER ON infra_app.* TO app@"%";
+
+CREATE DATABASE IF NOT EXISTS infra_app_test;
+GRANT ALL PRIVILEGES ON infra_app_test.* TO app@"%";
