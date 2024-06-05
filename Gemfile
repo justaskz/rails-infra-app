@@ -26,15 +26,15 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'mock_redis', '~> 0.22.0'
+  gem 'rspec-its'
+  gem 'rspec-rails'
 end
 
 group :development, :test do
-  gem 'factory_bot_rails'
-  gem 'faker'
   gem 'pry-rails'
-  gem 'rspec-its'
-  gem 'rspec-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
 end

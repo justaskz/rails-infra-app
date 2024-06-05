@@ -7,11 +7,11 @@ default: &default
 
 development: &development
   <<: *default
-  database: <%= Services::Mysql::Env.database %>
-  host: <%= Services::Mysql::Env.host %>
-  username: <%= Services::Mysql::Env.username %>
-  password: <%= Services::Mysql::Env.password %>
-  port: <%= Services::Mysql::Env.port %>
+  database: infra_app
+  host: <%= ENV.fetch('MYSQL_HOST', '0.0.0.0') %>
+  username: <%= ENV.fetch('MYSQL_USERNAME', 'app') %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD', 'app') %>
+  port: <%= ENV.fetch('MYSQL_DATABASE', 'infra_app') %>
   timeout: 1000 # milliseconds
 
 test:
