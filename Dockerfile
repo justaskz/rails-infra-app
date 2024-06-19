@@ -7,7 +7,7 @@ WORKDIR /app
 FROM base AS development
 
 RUN apt-get update -qq && apt install -y curl wget vim less default-mysql-client netcat-traditional
-COPY Gemfile Gemfile.lock .
+COPY Gemfile Gemfile.lock ./
 RUN gem update bundler && bundle install --jobs 20 --retry 5
 COPY . .
 
@@ -21,7 +21,7 @@ CMD ["/bin/bash", "scripts/server"]
 FROM base AS test
 
 ENV RAILS_ENV="test"
-COPY Gemfile Gemfile.lock .
+COPY Gemfile Gemfile.lock ./
 RUN gem update bundler && bundle config set with test && bundle install --jobs 20 --retry 5
 COPY . .
 
