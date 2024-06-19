@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'bootsnap', '~> 1.7', require: false
 gem 'cassandra-driver', '~> 3.2'
-gem 'dotenv-rails'
 gem 'lean_interactor'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '~> 5.6'
