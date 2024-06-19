@@ -7,18 +7,18 @@
 <div style="margin-bottom: 10px">
   <div style="display: inline-block;">
     <%= form_with(url: workers_path(action_type: :create)) do %>
-      <%= submit_tag 'Spawn Create worker' %>
+      <%= submit_tag 'Spawn worker Creator' %>
     <% end %>
   </div>
 
   <div style="display: inline-block;">
     <%= form_with(url: workers_path(action_type: :update)) do %>
-      <%= submit_tag 'Spawn Update worker' %>
+      <%= submit_tag 'Spawn worker Updator' %>
     <% end %>
   </div>
 </div>
 
 <div>Records: <%= Record.count %></div>
-<div>Create Workers: <%= App.redis.hget(:worker_count, :create) || 0 %></div>
-<div>Update Workers: <%= App.redis.hget(:worker_count, :update) || 0 %></div>
+<div>Workers Creators: <%= App.redis.hget(:worker_count, :create) || 0 %></div>
+<div>Workers Updators: <%= App.redis.hget(:worker_count, :update) || 0 %></div>
 <div>Sidekiq Errors: <%= Sidekiq::Failures.count %></div>
