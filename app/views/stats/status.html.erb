@@ -21,5 +21,9 @@
 </div>
 
 <div>
-  <b>Cassandra:</b> <%= Services::Cassandra.status %>
+  <b>Cassandras:</b> <%= Services::Cassandra.status %>
+</div>
+
+<div>
+  <b>Demo secret:</b> <%= ENV.fetch("DEMO_SECRET") %>
 </div>
