@@ -24,6 +24,15 @@ services:
     container_name: infra-app__sidekiq
     image: infra-app__rails
     command: bash scripts/sidekiq
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USERNAME: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PORT: ${MYSQL_PORT}
+      REDIS_HOST: ${REDIS_HOST}
+      CASSANDRA_HOSTS: ${CASSANDRA_HOSTS}
+      PLATFORM: ${PLATFORM}
     volumes:
       - .:/app
     depends_on:
