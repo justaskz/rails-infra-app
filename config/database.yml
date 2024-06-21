@@ -7,11 +7,11 @@ default: &default
 
 development: &development
   <<: *default
-  host: <%= ENV.fetch('MYSQL_HOST') %>
-  database: <%= ENV.fetch('MYSQL_DATABASE') %>
-  username: <%= ENV.fetch('MYSQL_USERNAME') %>
-  password: <%= ENV.fetch('MYSQL_PASSWORD') %>
-  port: <%= ENV.fetch('MYSQL_PORT') %>
+  host: <%= ENV.fetch('MYSQL_HOST', 'localhost') %>
+  database: <%= ENV.fetch('MYSQL_DATABASE', 'infra_app') %>
+  username: <%= ENV.fetch('MYSQL_USERNAME', 'app') %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD', 'app') %>
+  port: <%= ENV.fetch('MYSQL_PORT', 3306) %>
   timeout: 1000 # milliseconds
 
 test:
@@ -21,7 +21,7 @@ test:
 production:
   <<: *default
   database: infra_app
-  host: <%= ENV['MYSQL_HOST'] %>
-  port: <%= ENV['MYSQL_PORT'] %>
-  username: <%= ENV['MYSQL_USERNAME'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: <%= ENV.fetch('MYSQL_HOST') %>
+  port: <%= ENV.fetch('MYSQL_PORT') %>
+  username: <%= ENV.fetch('MYSQL_USERNAME') %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD') %>

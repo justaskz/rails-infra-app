@@ -25,7 +25,7 @@ COPY Gemfile Gemfile.lock ./
 RUN gem update bundler && bundle config set with test && bundle install --jobs 20 --retry 5
 COPY . .
 
-CMD ["bundle exec rspec"]
+CMD ["/bin/bash", "scripts/server"]
 
 ##################################################
 ## PRODUCTION

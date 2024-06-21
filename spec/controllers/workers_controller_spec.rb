@@ -17,7 +17,7 @@ RSpec.describe WorkersController do
 
       specify do
         subject
-        expect(subject).to redirect_to(root_path)
+        expect(subject).to redirect_to(stats_path)
       end
     end
 
@@ -30,7 +30,7 @@ RSpec.describe WorkersController do
 
       specify do
         subject
-        expect(subject).to redirect_to(root_path)
+        expect(subject).to redirect_to(stats_path)
       end
     end
   end
