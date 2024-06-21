@@ -1,0 +1,22 @@
+---
+on: push
+
+env:
+  RAILS_ENV: test
+
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create infra
+        run: docker compose up -d --build
+
+      - name: Run rspec
+        run: docker compose exec rails bash scripts/test
+
+      - name: Clean up
+        if: always()
+        run: docker compose down --volumes

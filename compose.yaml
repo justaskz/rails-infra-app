@@ -5,7 +5,7 @@ services:
     image: infra-app__rails
     hostname: infra-app
     build:
-      target: development
+      target: ${RAILS_ENV:-development}
     environment:
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -19,6 +19,9 @@ services:
       - .:/app
     ports:
       - "${RAILS_PORT}:${RAILS_PORT}"
+    depends_on:
+      mysql:
+        condition: service_healthy
 
   sidekiq:
     container_name: infra-app__sidekiq
@@ -57,6 +60,11 @@ services:
     volumes:
       # - mysql:/var/lib/mysql
       - ./scripts/setup_db.sql:/docker-entrypoint-initdb.d/setup_db.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   cassandra:
     container_name: infra-app__cassandra
