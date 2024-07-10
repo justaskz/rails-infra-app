@@ -1,18 +1,21 @@
 class StatusesController < ApplicationController
   def show
-    services
-    @hostname = Socket.gethostname
-
-    # render status: 503 if services.to_h.values.any?(&:unavailable?)
+    @services ||= services
+    @hostname ||= Socket.gethostname
+    @http_echo_response ||= http_echo
   end
 
   private
 
   def services
-    @services ||= OpenStruct.new(
+    OpenStruct.new(
       mysql: MysqlService,
       redis: RedisService,
       cassandra: CassandraService
     )
+  end
+
+  def http_echo
+    Faraday.get(ENV.fetch('HTTP_ECHO_URL'))
   end
 end
