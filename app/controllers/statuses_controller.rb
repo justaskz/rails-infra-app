@@ -16,6 +16,11 @@ class StatusesController < ApplicationController
   end
 
   def http_echo
-    Faraday.get(ENV.fetch('HTTP_ECHO_URL'))
+    url = ENV.fetch('HTTP_ECHO_URL', nil)
+    return 'NOT CONFIGURED' unless url
+
+    Faraday.get(url)
+  rescue StandardError
+    CommonService::UNAVAILABLE
   end
 end
