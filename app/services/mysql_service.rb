@@ -6,7 +6,7 @@ class MysqlService < CommonService
   end
 
   def self.schema_status
-    Record.count && CommonService::AVAILABLE
+    ActiveRecord::Migration.check_pending! || CommonService::AVAILABLE
   rescue StandardError
     CommonService::UNAVAILABLE
   end
