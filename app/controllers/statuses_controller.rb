@@ -3,6 +3,7 @@ class StatusesController < ApplicationController
     @services ||= services
     @hostname ||= Socket.gethostname
     @http_echo_response ||= http_echo
+    @revision ||= revision
   end
 
   private
@@ -13,6 +14,10 @@ class StatusesController < ApplicationController
       redis: RedisService,
       cassandra: CassandraService
     )
+  end
+
+  def revision
+    File.read('.revision')
   end
 
   def http_echo
