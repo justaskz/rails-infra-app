@@ -2,7 +2,7 @@
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   docker_build:
@@ -10,13 +10,20 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+
+      - name: Get the latest commit hash
+        id: get_sha
+        run: echo "COMMIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Write commit SHA to .revision file
+        run: echo "${{ env.COMMIT_SHA }}" > .revision
 
       - name: Build Docker image
-        run: docker build --tag infra-app:latest --target development .
+        run: docker build --tag registry.infra.net/infra-app:${{ env.COMMIT_SHA }} --target development .
 
-      - name: Tag image
-        run: docker tag infra-app:latest registry.infra.net/infra-app:latest
+      # - name: Tag image
+      #   run: docker tag infra-app:latest registry.infra.net/infra-app:latest
 
       - name: Push image to registry
-        run: docker push registry.infra.net/infra-app:latest
+        run: docker push registry.infra.net/infra-app:${{ env.COMMIT_SHA }}

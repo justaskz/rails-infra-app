@@ -5,6 +5,10 @@
 </div>
 
 <div>
+  <b>REVISION:</b> <%= @revision %>
+</div>
+
+<div>
   <b>RAILS_ENV:</b> <%= ENV.fetch("RAILS_ENV") %>
 </div>
 
@@ -20,7 +24,7 @@
   <b>Redis:</b> <%= @services.redis.status %>
 </div>
 
-<div>
+<div style="margin-bottom: 20px">
   <b>Cassandra:</b> <%= @services.cassandra.status %>
 </div>
 
