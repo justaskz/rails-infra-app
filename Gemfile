@@ -12,7 +12,6 @@ gem 'ruby-kafka', '~> 1.5'
 gem 'sidekiq', '~> 6.5'
 gem 'sidekiq-cron'
 gem 'sidekiq-failures'
-gem 'sidekiq-throttled'
 
 gem 'sorted_set'
 

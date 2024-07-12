@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :record do
+  factory :record, class: CrudApp::Record do
     version { 1 }
-    signature { 'create_1' }
+    worker_id { 1 }
   end
 end
