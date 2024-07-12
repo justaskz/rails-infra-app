@@ -15,30 +15,3 @@ REDIS_HOST=redis
 
 CASSANDRA_HOSTS="cassandra"
 ```
-
-
-### CrudApp
-```ruby
-context = {
-  action_type: :create,
-  worker_id: 1,
-}
-
-CrudApp::Workers::Create.for(context)
-def run
-  CrudApp::Workers::Count::Update.for(action_type)
-  CrudApp::Workers::Worker.perform_async(context)
-end
-
-
-def perform(context)
-  case context.action_type
-  when :create then CrudApp::Records::Create
-  end
-end
-
-def create
-
-end
-
-```
