@@ -1,14 +1,44 @@
 # README
 
-Supported environments:
-`docker` - docker-compose
-
 Before launching, make sure that `.env` is present and defines these variables:
 ```bash
-#!/usr/bin/env bash
+RAILS_ENV=development
+RAILS_PORT=3000
 
-export MYSQL_HOST=localhost
-export MYSQL_USERNAME=app
-export MYSQL_PASSWORD=app
-export MYSQL_PORT=3306
+MYSQL_HOST=mysql
+MYSQL_DATABASE=infra_app
+MYSQL_USERNAME=app
+MYSQL_PASSWORD=app
+MYSQL_PORT=3306
+
+REDIS_HOST=redis
+
+CASSANDRA_HOSTS="cassandra"
+```
+
+
+### CrudApp
+```ruby
+context = {
+  action_type: :create,
+  worker_id: 1,
+}
+
+CrudApp::Workers::Create.for(context)
+def run
+  CrudApp::Workers::Count::Update.for(action_type)
+  CrudApp::Workers::Worker.perform_async(context)
+end
+
+
+def perform(context)
+  case context.action_type
+  when :create then CrudApp::Records::Create
+  end
+end
+
+def create
+
+end
+
 ```

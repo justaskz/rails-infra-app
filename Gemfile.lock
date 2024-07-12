@@ -187,7 +187,6 @@ GEM
       ffi (~> 1.0)
     rbtree (0.4.6)
     redis (4.8.1)
-    redis-prescription (2.6.0)
     rouge (4.3.0)
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
@@ -222,10 +221,6 @@ GEM
       sidekiq (>= 6)
     sidekiq-failures (1.0.4)
       sidekiq (>= 4.0.0)
-    sidekiq-throttled (1.4.0)
-      concurrent-ruby (>= 1.2.0)
-      redis-prescription (~> 2.2)
-      sidekiq (>= 6.5)
     sorted_set (1.0.3)
       rbtree
       set (~> 1.0)
@@ -274,7 +269,6 @@ DEPENDENCIES
   sidekiq (~> 6.5)
   sidekiq-cron
   sidekiq-failures
-  sidekiq-throttled
   sorted_set
   spring
   spring-commands-rspec

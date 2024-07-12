@@ -1,8 +1,4 @@
-<div style="margin-bottom: 20px">
-  <div style="display: inline-block"><%= link_to 'Home', root_path %></div>
-  <div style="display: inline-block"><%= link_to 'App', stats_path %></div>
-  <div style="display: inline-block"><%= link_to 'Sidekiq', sidekiq_web_path %></div>
-</div>
+<%= render("shared/menu") %>
 
 <div style="margin-bottom: 20px">
   <b>Server hostname:</b> <%= @hostname %>

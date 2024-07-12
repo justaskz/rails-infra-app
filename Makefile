@@ -38,3 +38,6 @@ server:
 
 console:
 	@ bash scripts/console
+
+sidekiq:
+	@ bash scripts/sidekiq

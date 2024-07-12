@@ -1,14 +1,14 @@
-RSpec.describe Records::Update, '.run' do
-  subject { described_class.run(worker_id) }
+RSpec.describe CrudApp::Records::Update, '.for' do
+  subject { described_class.for(worker_id) }
 
-  let(:worker_id) { 'update_1' }
+  let(:worker_id) { 1 }
   let!(:record) { create(:record, version: 1) }
 
   context 'when records exists' do
     specify do
       expect { subject }.to change { record.reload.updated_at }
       expect(subject).to eq(true)
-      expect(record.reload).to have_attributes(version: 2, signature: worker_id)
+      expect(record.reload).to have_attributes(version: 2, worker_id: worker_id)
     end
   end
 
@@ -19,10 +19,10 @@ RSpec.describe Records::Update, '.run' do
 
   context 'when db is returning outdated data' do
     before do
-      allow(Record).to receive(:find).with(record.id).and_return(record, old_record)
+      allow(CrudApp::Record).to receive(:find).with(record.id).and_return(record, old_record)
     end
 
-    let(:old_record) { build(:record, signature: 1, updated_at: old_v) }
+    let(:old_record) { build(:record, worker_id: 1, updated_at: old_v) }
     let!(:old_v) { record.updated_at }
 
     specify do
