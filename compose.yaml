@@ -14,6 +14,7 @@ services:
       MYSQL_PORT: ${MYSQL_PORT}
       REDIS_HOST: ${REDIS_HOST}
       CASSANDRA_HOSTS: ${CASSANDRA_HOSTS}
+      KAFKA_BOOTSTRAP_NODES: ${KAFKA_BOOTSTRAP_NODES}
       PLATFORM: ${PLATFORM}
     volumes:
       - .:/app
