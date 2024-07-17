@@ -43,7 +43,7 @@ services:
 
   redis:
     container_name: infra-app__redis
-    image: redis:7
+    image: redis:7.2
     # volumes:
     #   - redis:/data
 
@@ -66,11 +66,29 @@ services:
       timeout: 5s
       retries: 5
 
+  redpanda:
+    container_name: infra-app__redpanda
+    image: docker.redpanda.com/redpandadata/redpanda:v24.1.9
+    ports:
+      - 9092:9092
+
+  redpanda_ui:
+    container_name: infra-app__redpanda_ui
+    image: redpandadata/console:v2.6.1
+    environment:
+      KAFKA_BROKERS: redpanda:9092
+    ports:
+      - 8080:8080
+
   cassandra:
     container_name: infra-app__cassandra
     image: cassandra:4.1
     # volumes:
     #   - cassandra:/var/
+
+  # debug:
+  #   container_name: infra-app__debug
+  #   image: leakymirror/adminbox
 
 # volumes:
 #   redis:

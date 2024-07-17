@@ -81,8 +81,6 @@ GEM
     database_cleaner-core (2.0.1)
     date (3.3.4)
     diff-lcs (1.5.1)
-    digest-crc (0.6.5)
-      rake (>= 12.0.0, < 14.0.0)
     erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
@@ -123,6 +121,7 @@ GEM
     marcel (1.0.4)
     method_source (1.1.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.7)
     minitest (5.24.0)
     mock_redis (0.22.0)
     msgpack (1.7.2)
@@ -146,7 +145,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    puma (5.6.8)
+    puma (6.4.2)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.0)
@@ -186,6 +185,10 @@ GEM
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     rbtree (0.4.6)
+    rdkafka (0.16.1)
+      ffi (~> 1.15)
+      mini_portile2 (~> 2.6)
+      rake (> 12)
     redis (4.8.1)
     rouge (4.3.0)
     rspec-core (3.13.0)
@@ -208,8 +211,6 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.1)
-    ruby-kafka (1.5.0)
-      digest-crc
     set (1.1.0)
     sidekiq (6.5.12)
       connection_pool (>= 2.2.5, < 3)
@@ -260,12 +261,12 @@ DEPENDENCIES
   mock_redis (~> 0.22.0)
   mysql2 (~> 0.5)
   pry-rails
-  puma (~> 5.6)
+  puma (~> 6.4)
   rails (~> 6.1)
+  rdkafka (~> 0.16)
   redis (~> 4.4)
   rspec-its
   rspec-rails
-  ruby-kafka (~> 1.5)
   sidekiq (~> 6.5)
   sidekiq-cron
   sidekiq-failures
@@ -274,4 +275,4 @@ DEPENDENCIES
   spring-commands-rspec
 
 BUNDLED WITH
-   2.5.14
+   2.5.15
