@@ -12,7 +12,8 @@ class StatusesController < ApplicationController
     OpenStruct.new(
       mysql: MysqlService,
       redis: RedisService,
-      cassandra: CassandraService
+      cassandra: CassandraService,
+      redpanda: KafkaService
     )
   end
 
