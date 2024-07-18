@@ -7,7 +7,6 @@ services:
     build:
       target: ${RAILS_ENV:-development}
     environment:
-      RAILS_ENV: ${RAILS_ENV}
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USERNAME: ${MYSQL_USERNAME}

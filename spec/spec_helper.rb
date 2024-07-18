@@ -23,10 +23,7 @@ RSpec.configure do |config|
   config.before(:each) do |example|
     DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
-
-    allow(Redis)
-      .to receive(:new)
-      .and_return(MockRedis.new)
+    allow(Redis).to receive(:new).and_return(MockRedis.new)
   end
 
   config.after(:each) do
