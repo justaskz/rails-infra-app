@@ -49,5 +49,9 @@ Rails.application.configure do
   # do not check for pending migrations
   config.active_record.migration_error = false
 
-  config.hosts = ['app.infra.net', '0.0.0.0', 'localhost']
+  config.hosts = [
+    'localhost',
+    ENV.fetch('HOST_IP', '0.0.0.0'),
+    'app.infra.net',
+  ]
 end
