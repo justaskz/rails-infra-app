@@ -4,6 +4,7 @@ services:
     container_name: infra-app__rails
     image: infra-app__rails
     hostname: infra-app
+    command: tail -f /dev/null
     build:
       target: ${RAILS_ENV:-development}
     environment:
