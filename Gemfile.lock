@@ -115,6 +115,8 @@ GEM
     faraday-net_http (3.1.0)
       net-http
     ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
     fugit (1.11.0)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -162,6 +164,10 @@ GEM
       net-protocol
     nio4r (2.7.3)
     nokogiri (1.16.6-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.6-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -282,6 +288,8 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin-23
+  x86_64-linux
 
 DEPENDENCIES
   better_errors
@@ -310,4 +318,4 @@ DEPENDENCIES
   spring-commands-rspec
 
 BUNDLED WITH
-   2.5.15
+   2.5.16
