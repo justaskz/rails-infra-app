@@ -8,15 +8,24 @@ jobs:
   test:
     runs-on: self-hosted
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - run: gem install bundler
+      - run: bundle exec rspec
 
-      - name: Create infra
-        run: docker compose up -d --build
+    # steps:
+    #   - name: Checkout repository
+    #     uses: actions/checkout@v4
 
-      - name: Run rspec
-        run: docker compose exec rails bash scripts/test
+    #   - name: Create infra
+    #     run: docker compose up -d --build
 
-      - name: Clean up
-        if: always()
-        run: docker compose down --volumes
+    #   - name: Run rspec
+    #     run: docker compose exec rails bash scripts/test
+
+    #   - name: Clean up
+    #     if: always()
+    #     run: docker compose down --volumes
