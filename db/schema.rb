@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_11_101942) do
+ActiveRecord::Schema[7.2].define(version: 2024_07_11_101942) do
   create_table "records", id: { type: :integer, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "worker_id", unsigned: true
     t.integer "version", null: false, unsigned: true
@@ -22,5 +22,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_11_101942) do
     t.integer "job_type", limit: 1, unsigned: true
     t.integer "is_running", limit: 1, default: 0, unsigned: true
   end
-
 end

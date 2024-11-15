@@ -5,14 +5,14 @@ gem 'cassandra-driver', '~> 3.2'
 gem 'faraday'
 gem 'lean_interactor'
 gem 'mysql2', '~> 0.5'
+gem 'ostruct', '~> 0.6.1'
 gem 'puma', '~> 6.4'
-gem 'rails', '~> 7.1'
+gem 'rails', '~> 7.2'
 gem 'rdkafka', '~> 0.16'
 gem 'redis', '~> 5.2'
 gem 'sidekiq', '~> 7.3'
 gem 'sidekiq-cron'
 gem 'sidekiq-failures'
-
 gem 'sorted_set'
 
 group :development do
