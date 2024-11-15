@@ -5,10 +5,10 @@ services:
     image: infra-app__rails
     hostname: infra-app
     build:
-      target: ${RAILS_ENV:-development}
+      target: ${RAILS_ENV}
     environment:
+      RAILS_ENV: ${RAILS_ENV}
       MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USERNAME: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_PORT: ${MYSQL_PORT}
@@ -30,7 +30,6 @@ services:
     command: bash scripts/sidekiq
     environment:
       MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USERNAME: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_PORT: ${MYSQL_PORT}
@@ -45,21 +44,20 @@ services:
   redis:
     container_name: infra-app__redis
     image: redis:7.2
-    # volumes:
-    #   - redis:/data
+    volumes:
+      - redis:/data
 
   mysql:
     container_name: infra-app__mysql
     image: mysql:8.3
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - 3306:3306
     volumes:
-      # - mysql:/var/lib/mysql
+      - mysql:/var/lib/mysqlm
       - ./scripts/setup_db.sql:/docker-entrypoint-initdb.d/setup_db.sql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
@@ -84,14 +82,14 @@ services:
   cassandra:
     container_name: infra-app__cassandra
     image: cassandra:4.1
-    # volumes:
-    #   - cassandra:/var/
+    volumes:
+      - cassandra:/var/
 
   # debug:
   #   container_name: infra-app__debug
   #   image: leakymirror/adminbox
 
-# volumes:
-#   redis:
-#   mysql:
-#   cassandra:
+volumes:
+  redis:
+  mysql:
+  cassandra:
