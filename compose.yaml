@@ -8,6 +8,7 @@ services:
       target: ${RAILS_ENV}
     environment:
       RAILS_ENV: ${RAILS_ENV}
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_USERNAME: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
@@ -29,12 +30,15 @@ services:
     image: infra-app__rails
     command: bash scripts/sidekiq
     environment:
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+      RAILS_ENV: ${RAILS_ENV}
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_USERNAME: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_PORT: ${MYSQL_PORT}
       REDIS_HOST: ${REDIS_HOST}
       CASSANDRA_HOSTS: ${CASSANDRA_HOSTS}
+      KAFKA_BOOTSTRAP_NODES: ${KAFKA_BOOTSTRAP_NODES}
       PLATFORM: ${PLATFORM}
     volumes:
       - .:/app
