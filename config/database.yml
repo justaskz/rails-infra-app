@@ -5,14 +5,14 @@ default: &default
   collation: utf8mb4_unicode_ci
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 100 } %>
   timeout: 1000 # milliseconds
+  host: <%= ENV.fetch('MYSQL_HOST', 'localhost') %>
+  port: <%= ENV.fetch('MYSQL_PORT', 3306) %>
+  username: <%= ENV.fetch('MYSQL_USERNAME', 'app') %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD', 'app') %>
 
 development: &development
   <<: *default
-  host: <%= ENV.fetch('MYSQL_HOST') %>
-  port: <%= ENV.fetch('MYSQL_PORT', 3306) %>
   database: infra_app_development
-  username: <%= ENV.fetch('MYSQL_USERNAME') %>
-  password: <%= ENV.fetch('MYSQL_PASSWORD') %>
 
 test:
   <<: *development
@@ -20,8 +20,4 @@ test:
 
 production:
   <<: *default
-  host: <%= ENV.fetch('MYSQL_HOST') %>
-  port: <%= ENV.fetch('MYSQL_PORT') %>
   database: infra_app
-  username: <%= ENV.fetch('MYSQL_USERNAME') %>
-  password: <%= ENV.fetch('MYSQL_PASSWORD') %>
