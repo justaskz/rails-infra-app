@@ -23,12 +23,12 @@ jobs:
       - name: Write commit SHA to .revision file
         run: echo "${{ env.COMMIT_SHA }}" > .revision
 
-      - name: Build Docker image [dev]
-        run: |
-          docker build . \
-            --target development \
-            --tag registry.infra.net/infra-app:${{ env.COMMIT_SHA }} \
-            --tag registry.infra.net/infra-app:dev
+      # - name: Build Docker image [dev]
+      #   run: |
+      #     docker build . \
+      #       --target development \
+      #       --tag registry.infra.net/infra-app:${{ env.COMMIT_SHA }} \
+      #       --tag registry.infra.net/infra-app:dev
 
       - name: Build Docker image [prod]
         run: |
