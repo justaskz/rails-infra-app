@@ -255,7 +255,7 @@ GEM
     rspec-support (3.13.1)
     securerandom (0.3.2)
     set (1.1.0)
-    sidekiq (7.3.0)
+    sidekiq (7.3.6)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       logger
