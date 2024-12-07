@@ -30,10 +30,9 @@ jobs:
       #       --tag registry.infra.net/infra-app:${{ env.COMMIT_SHA }} \
       #       --tag registry.infra.net/infra-app:dev
 
-      - name: Build Docker image [prod]
-        run: |
-          docker build . \
-            --target production \
+      - name: Build Docker image
+        run: |-
+          docker build . --target production \
             --tag registry.infra.net/infra-app:${{ env.COMMIT_SHA }} \
             --tag registry.infra.net/infra-app:prod
 
