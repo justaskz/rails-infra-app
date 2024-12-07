@@ -32,9 +32,9 @@ CMD ["/bin/bash", "scripts/server"]
 ##################################################
 FROM base AS production
 
+ENV RAILS_ENV=production
 COPY Gemfile Gemfile.lock ./
 RUN gem update bundler && bundle config set without development test && bundle install --jobs 20 --retry 5
 COPY . .
-ENV RAILS_ENV=production
 
 CMD ["/bin/bash", "scripts/server"]
