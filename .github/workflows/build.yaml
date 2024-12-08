@@ -16,6 +16,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Get the latest commit hash
         id: get_sha
         run: echo "COMMIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
@@ -25,9 +28,9 @@ jobs:
 
       - name: Build Docker image
         run: |-
-          DOCKER_BUILDKIT=1 docker build . --target production \
+          docker build --target production \
             --tag registry.infra.net/infra-app:${{ env.COMMIT_SHA }} \
-            --tag registry.infra.net/infra-app:prod
+            --tag registry.infra.net/infra-app:prod .
 
       - name: Push image to registry
         run: docker push registry.infra.net/infra-app --all-tags
