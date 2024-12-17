@@ -3,7 +3,7 @@ services:
   rails:
     container_name: infra-app__rails
     image: infra-app__rails
-    hostname: infra-app
+    hostname: rails
     build:
       target: ${RAILS_ENV}
     environment:
@@ -28,6 +28,7 @@ services:
   sidekiq:
     container_name: infra-app__sidekiq
     image: infra-app__rails
+    hostname: sidekiq
     command: bash scripts/sidekiq
     environment:
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}

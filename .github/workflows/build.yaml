@@ -25,7 +25,8 @@ jobs:
 
       - name: Build Docker image
         run: |-
-          docker build --target production \
+          docker build \
+            --target production \
             --tag registry.infra.net/infra-app:${{ env.COMMIT_SHA }} \
             --tag registry.infra.net/infra-app:prod .
 

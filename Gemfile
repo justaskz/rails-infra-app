@@ -4,6 +4,7 @@ gem 'bootsnap', '~> 1.7', require: false
 gem 'cassandra-driver', '~> 3.2'
 gem 'faraday'
 gem 'lean_interactor'
+gem 'lograge'
 gem 'mysql2', '~> 0.5'
 gem 'ostruct', '~> 0.6.1'
 gem 'puma', '~> 6.4'
@@ -14,7 +15,6 @@ gem 'sidekiq', '~> 7.3'
 gem 'sidekiq-cron'
 gem 'sidekiq-failures'
 gem 'sorted_set'
-
 group :development do
   gem 'better_errors'
   # gem 'better_errors-pry'
