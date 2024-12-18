@@ -3,7 +3,7 @@ class CrudApp::Worker < ApplicationRecord
   UPDATE = 1
   DELETE = 2
 
-  enum job_type: {
+  enum :job_type, {
     creator: CREATE,
     updater: UPDATE,
     deleter: DELETE,
