@@ -13,6 +13,14 @@
 </div>
 
 <div>
+  <b>RAILS_PORT:</b> <%= ENV.fetch("RAILS_PORT") %>
+</div>
+
+<div>
+  <b>RAILS_LOG_LEVEL:</b> <%= ENV.fetch("RAILS_LOG_LEVEL") %>
+</div>
+
+<div>
   <b>MySQL:</b> <%= @services.mysql.status %>
 </div>
 
