@@ -2,7 +2,7 @@
 services:
   rails:
     container_name: infra-app__rails
-    image: infra-app__rails
+    image: infra-app__rails:${RAILS_ENV}
     hostname: rails
     build:
       target: ${RAILS_ENV}
@@ -29,7 +29,7 @@ services:
 
   sidekiq:
     container_name: infra-app__sidekiq
-    image: infra-app__rails
+    image: infra-app__rails:${RAILS_ENV}
     hostname: sidekiq
     command: bash scripts/sidekiq
     environment:
