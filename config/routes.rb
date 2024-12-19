@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'statuses#show'
 
+  resource :health, only: [:show], controller: :health
   resource :status, only: [:show]
 
   scope module: 'crud_app' do
