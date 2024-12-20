@@ -7,8 +7,10 @@ services:
     build:
       target: ${RAILS_ENV}
     environment:
+      OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT}
+      OTEL_TRACES_EXPORTER: ${OTEL_TRACES_EXPORTER}
+      OTEL_LOG_LEVEL: ${OTEL_LOG_LEVEL}
       RAILS_ENV: ${RAILS_ENV}
-      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
       RAILS_PORT: ${RAILS_PORT}
       RAILS_LOG_LEVEL: ${RAILS_LOG_LEVEL}
       MYSQL_HOST: ${MYSQL_HOST}
@@ -33,7 +35,6 @@ services:
     hostname: sidekiq
     command: bash scripts/sidekiq
     environment:
-      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
       RAILS_ENV: ${RAILS_ENV}
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_USERNAME: ${MYSQL_USERNAME}
