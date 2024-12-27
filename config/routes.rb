@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resource :health, only: [:show], controller: :health
   resource :status, only: [:show]
 
-  scope module: 'crud_app' do
+  namespace :prometheus_app do
+    resources :stats, only: [:index]
+  end
+
+  namespace :crud_app do
     resources :stats, only: [:index]
     resources :workers, only: [:create, :destroy]
   end

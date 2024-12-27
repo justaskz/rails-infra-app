@@ -2,13 +2,13 @@ class CrudApp::WorkersController < ApplicationController
   def create
     CrudApp::Workers::Create.run(job_type)
 
-    redirect_to(stats_path)
+    redirect_to(crud_app_stats_path)
   end
 
   def destroy
     CrudApp::Workers::Delete.for(worker_id)
 
-    redirect_to(stats_path)
+    redirect_to(crud_app_stats_path)
   end
 
   private
