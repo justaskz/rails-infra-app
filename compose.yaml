@@ -4,23 +4,10 @@ services:
     container_name: infra-app__rails
     image: infra-app__rails:${RAILS_ENV}
     hostname: rails
+    command: tail -f /dev/null
     build:
       target: ${RAILS_ENV}
-    environment:
-      OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT}
-      OTEL_TRACES_EXPORTER: ${OTEL_TRACES_EXPORTER}
-      OTEL_LOG_LEVEL: ${OTEL_LOG_LEVEL}
-      RAILS_ENV: ${RAILS_ENV}
-      RAILS_PORT: ${RAILS_PORT}
-      RAILS_LOG_LEVEL: ${RAILS_LOG_LEVEL}
-      MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_USERNAME: ${MYSQL_USERNAME}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_PORT: ${MYSQL_PORT}
-      REDIS_HOST: ${REDIS_HOST}
-      CASSANDRA_HOSTS: ${CASSANDRA_HOSTS}
-      KAFKA_BOOTSTRAP_NODES: ${KAFKA_BOOTSTRAP_NODES}
-      PLATFORM: ${PLATFORM}
+    env_file: .env
     volumes:
       - .:/app
     ports:
@@ -34,16 +21,7 @@ services:
     image: infra-app__rails:${RAILS_ENV}
     hostname: sidekiq
     command: bash scripts/sidekiq
-    environment:
-      RAILS_ENV: ${RAILS_ENV}
-      MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_USERNAME: ${MYSQL_USERNAME}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_PORT: ${MYSQL_PORT}
-      REDIS_HOST: ${REDIS_HOST}
-      CASSANDRA_HOSTS: ${CASSANDRA_HOSTS}
-      KAFKA_BOOTSTRAP_NODES: ${KAFKA_BOOTSTRAP_NODES}
-      PLATFORM: ${PLATFORM}
+    env_file: .env
     volumes:
       - .:/app
     depends_on:
@@ -92,10 +70,6 @@ services:
     image: cassandra:4.1
     volumes:
       - cassandra:/var/
-
-  # debug:
-  #   container_name: infra-app__debug
-  #   image: leakymirror/adminbox
 
 volumes:
   redis:
