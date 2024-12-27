@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   end
 
   mount Sidekiq::Web => '/sidekiq'
+  mount Yabeda::Prometheus::Exporter, at: '/metrics'
 end

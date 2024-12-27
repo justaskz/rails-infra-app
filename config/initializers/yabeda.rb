@@ -6,4 +6,4 @@ Yabeda.configure do
   end
 end
 
-Yabeda.configure!
+# Yabeda.configure!
