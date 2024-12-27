@@ -7,7 +7,7 @@ RSpec.describe CrudApp::WorkersController do
 
     specify do
       expect(CrudApp::Workers::Create).to receive(:run).with(job_type)
-      expect(subject).to redirect_to(stats_path)
+      expect(subject).to redirect_to(crud_app_stats_path)
     end
   end
 

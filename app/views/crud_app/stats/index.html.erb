@@ -2,13 +2,13 @@
 
 <div style="margin-bottom: 10px">
   <div style="display: inline-block;">
-    <%= form_with(url: workers_path(job_type: CrudApp::Worker::CREATE)) do %>
+    <%= form_with(url: crud_app_workers_path(job_type: CrudApp::Worker::CREATE)) do %>
       <%= submit_tag 'Spawn Creator' %>
     <% end %>
   </div>
 
   <div style="display: inline-block;">
-    <%= form_with(url: workers_path(job_type: CrudApp::Worker::UPDATE)) do %>
+    <%= form_with(url: crud_app_workers_path(job_type: CrudApp::Worker::UPDATE)) do %>
       <%= submit_tag 'Spawn Updator' %>
     <% end %>
   </div>
@@ -26,6 +26,6 @@
   <% @workers.each do |worker| %>
     <span><%= worker.id %></span>
     <span><%= worker.job_type %></span>
-    <span><%= button_to('Delete', worker_path(worker), method: :delete) %></span>
+    <span><%= button_to('Delete', crud_app_worker_path(worker), method: :delete) %></span>
   <% end %>
 </div>
