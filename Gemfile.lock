@@ -119,13 +119,13 @@ GEM
       logger
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
-    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (4.29.2-aarch64-linux)
+    google-protobuf (4.29.2)
       bigdecimal
       rake (>= 13)
     googleapis-common-protos-types (1.16.0)
@@ -176,7 +176,7 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.17.2-aarch64-linux)
+    nokogiri (1.18.0-aarch64-linux-gnu)
       racc (~> 1.4)
     opentelemetry-api (1.4.0)
     opentelemetry-common (0.21.0)
