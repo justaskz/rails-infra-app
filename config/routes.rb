@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :workers, only: [:create, :destroy]
   end
 
+  get '/metricas', to: 'health#metrics'
+
   mount Sidekiq::Web => '/sidekiq'
   mount Yabeda::Prometheus::Exporter, at: '/metrics'
 end
