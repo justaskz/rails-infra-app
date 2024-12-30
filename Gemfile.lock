@@ -350,6 +350,9 @@ GEM
       sidekiq (>= 6.5.0)
     sidekiq-failures (1.0.4)
       sidekiq (>= 4.0.0)
+    sniffer (0.5.0)
+      anyway_config (>= 1.0)
+      dry-initializer (~> 3)
     sorted_set (1.0.3)
       rbtree
       set (~> 1.0)
@@ -372,10 +375,24 @@ GEM
       anyway_config (>= 1.0, < 3)
       concurrent-ruby
       dry-initializer
+    yabeda-activerecord (0.1.1)
+      activerecord (>= 6.0)
+      yabeda (~> 0.6)
+    yabeda-gc (0.4.0)
+      yabeda (~> 0.6)
+    yabeda-http_requests (0.2.1)
+      sniffer
+      yabeda
+    yabeda-latency (1.0.0)
+      yabeda (~> 0.2)
     yabeda-prometheus (0.9.1)
       prometheus-client (>= 3.0, < 5.0)
       rack
       yabeda (~> 0.10)
+    yabeda-puma-plugin (0.7.1)
+      json
+      puma
+      yabeda (~> 0.5)
     yabeda-rails (0.9.0)
       activesupport
       anyway_config (>= 1.3, < 3)
@@ -424,9 +441,14 @@ DEPENDENCIES
   sorted_set
   spring
   spring-commands-rspec
-  webrick
+  webrick (~> 1.9)
   yabeda (~> 0.13.1)
+  yabeda-activerecord (~> 0.1.1)
+  yabeda-gc (~> 0.4.0)
+  yabeda-http_requests (~> 0.2.1)
+  yabeda-latency (~> 1.0)
   yabeda-prometheus (~> 0.9.1)
+  yabeda-puma-plugin (~> 0.7.1)
   yabeda-rails (~> 0.9.0)
   yabeda-sidekiq (~> 0.12.0)
 

@@ -13,6 +13,6 @@
 <div><b>RAILS_ENV:</b> <%= ENV.fetch("RAILS_ENV") %></div>
 <div><b>REVISION:</b> <%= @revision %></div>
 <div><b>RAILS_PORT:</b> <%= ENV.fetch("RAILS_PORT") %></div>
-<div><b>RAILS_LOG_LEVEL:</b> <%= ENV.fetch("RAILS_LOG_LEVEL") %></div>
+<div><b>RAILS_LOG_LEVEL:</b> <%= ENV.fetch("RAILS_LOG_LEVEL", :debug) %></div>
 <div><b>RUBY_VERSION:</b> <%= ENV.fetch("RUBY_VERSION", "undefined") %></div>
 <div><b>PLATFORM:</b> <%= ENV.fetch("PLATFORM", "undefined") %></div>
