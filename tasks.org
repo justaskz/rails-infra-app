@@ -1,10 +1,13 @@
 * TASKS
-  [ ] Implement production deployment
-  [ ] Separate code of mysql backend app to a module
+  [ ] Find a way to set counter to 0 (check how other exporters is doing that)
+  [ ] Set proper Ruby GC vars
+  [ ] Set proper ActiveRecord pool count
   -----
+  [ ] Separate code of mysql backend app to a module
   [ ] Find a way how to pass ENV vars without listing them in docker-compose.yml
   [ ] Implement stop button
   [ ] Implement flush button
+  [X] Implement production deployment
   [X] Implement count for Create workers
   [X] Implement count for Update workers
   [X] Implement error count

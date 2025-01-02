@@ -1,9 +1,5 @@
 class HealthController < ApplicationController
   def show
-    render plain: 'OK'
-  end
-
-  def metrics
-    render plain: 'OK'
+    render json: 'OK'
   end
 end
