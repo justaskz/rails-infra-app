@@ -1,9 +1,9 @@
 class StatusesController < ApplicationController
   def show
     @services ||= services
-    @hostname ||= Socket.gethostname
+    @hostname ||= InfraApp::Global.hostname
     @http_echo_response ||= http_echo
-    @revision ||= revision
+    @revision ||= InfraApp::Global.revision
   end
 
   private
@@ -15,10 +15,6 @@ class StatusesController < ApplicationController
       cassandra: CassandraService,
       redpanda: KafkaService
     )
-  end
-
-  def revision
-    File.read('.revision')
   end
 
   def http_echo
