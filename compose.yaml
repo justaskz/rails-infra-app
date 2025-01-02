@@ -3,6 +3,7 @@ services:
   rails:
     container_name: infra-app__rails
     image: infra-app__rails:${RAILS_ENV}
+    command: tail -f /dev/null
     hostname: rails
     build:
       target: ${RAILS_ENV}
