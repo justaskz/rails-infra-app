@@ -3,7 +3,7 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   collation: utf8mb4_unicode_ci
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 100 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 32 } %>
   timeout: 1000 # milliseconds
   host: <%= ENV.fetch('MYSQL_HOST', 'localhost') %>
   port: <%= ENV.fetch('MYSQL_PORT', 3306) %>
