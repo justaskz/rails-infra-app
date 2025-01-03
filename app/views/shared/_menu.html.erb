@@ -1,7 +1,8 @@
 <div style="margin-bottom: 20px">
-  <div style="display: inline-block"><%= link_to("Home", root_path) %></div>
-  <div style="display: inline-block"><%= link_to("CRUD App", crud_app_stats_path) %></div>
-  <div style="display: inline-block"><%= link_to("Prometheus App", prometheus_app_stats_path) %></div>
-  <div style="display: inline-block"><%= link_to("Sidekiq", sidekiq_web_path) %></div>
+  <div style="display: inline-block"><%= link_to("Home", root_path) %> |</div>
+  <div style="display: inline-block"><%= link_to("CRUD App", crud_app_stats_path) %> |</div>
+  <div style="display: inline-block"><%= link_to("Prometheus App", prometheus_app_stats_path) %> |</div>
+  <div style="display: inline-block"><%= link_to("Otel App", otel_app_stats_path) %> | </div>
+  <div style="display: inline-block"><%= link_to("Sidekiq", sidekiq_web_path) %> | </div>
   <div style="display: inline-block"><%= link_to("Metrics", yabeda_prometheus_exporter_path) %></div>
 </div>

@@ -1,14 +1,22 @@
-if ENV['OTEL_EXPORTER_OTLP_ENDPOINT'] && Rails.env.production?
+if ENV['OTEL_EXPORTER_ENABLED'] == 'true' && ENV['OTEL_EXPORTER_OTLP_ENDPOINT']
   require 'opentelemetry/sdk'
   require 'opentelemetry-exporter-otlp'
+  require 'opentelemetry-instrumentation-action_view'
+  require 'opentelemetry-instrumentation-active_record'
+  require 'opentelemetry-instrumentation-mysql2'
+  require 'opentelemetry-instrumentation-rack'
+  require 'opentelemetry-instrumentation-rails'
 
-  OpenTelemetry::SDK.configure do |c|
-    c.service_name = 'infra-app'
+  require 'opentelemetry-metrics-sdk'
+  require 'opentelemetry-exporter-otlp-metrics'
 
-    c.use 'OpenTelemetry::Instrumentation::ActiveRecord'
-    c.use 'OpenTelemetry::Instrumentation::ActiveView'
-    c.use 'OpenTelemetry::Instrumentation::Mysql2'
-    c.use 'OpenTelemetry::Instrumentation::Rack'
-    c.use 'OpenTelemetry::Instrumentation::Rails'
+  OpenTelemetry::SDK.configure do |config|
+    config.service_name = 'infra-app'
+
+    config.use 'OpenTelemetry::Instrumentation::ActiveRecord'
+    config.use 'OpenTelemetry::Instrumentation::ActionView'
+    config.use 'OpenTelemetry::Instrumentation::Mysql2'
+    config.use 'OpenTelemetry::Instrumentation::Rack'
+    config.use 'OpenTelemetry::Instrumentation::Rails'
   end
 end

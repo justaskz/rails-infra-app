@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :stats, only: [:index]
   end
 
+  namespace :otel_app do
+    resources :stats, only: [:index]
+  end
+
   namespace :crud_app do
     resources :stats, only: [:index]
     resources :workers, only: [:create, :destroy]
