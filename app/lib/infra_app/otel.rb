@@ -3,6 +3,8 @@ module InfraApp::Otel
 
   def increment
     counter.add(1)
+
+    true
   end
 
   def counter
