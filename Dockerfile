@@ -43,9 +43,9 @@ CMD ["/bin/bash", "scripts/server"]
 FROM base AS production
 
 ENV RAILS_ENV="production"
-RUN addgroup --system rails && adduser --system --ingroup rails rails
-USER rails
 RUN bundle config set without development test && bundle install --jobs 20 --retry 5
 COPY . .
+# RUN addgroup --system rails && adduser --system --ingroup rails rails
+# USER rails
 
 CMD ["/bin/bash", "scripts/server"]
