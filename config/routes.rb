@@ -4,17 +4,21 @@ Rails.application.routes.draw do
   resource :health, only: [:show], controller: :health
   resource :status, only: [:show]
 
+  namespace :crud_app do
+    resources :stats, only: [:index]
+    resources :workers, only: [:create, :destroy]
+  end
+
+  namespace :echo_app do
+    resources :messages, only: [:index]
+  end
+
   namespace :prometheus_app do
     resources :stats, only: [:index]
   end
 
   namespace :otel_app do
     resources :stats, only: [:index]
-  end
-
-  namespace :crud_app do
-    resources :stats, only: [:index]
-    resources :workers, only: [:create, :destroy]
   end
 
   mount Sidekiq::Web => '/sidekiq'
