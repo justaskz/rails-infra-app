@@ -6,14 +6,16 @@ gem 'faraday', '~> 2.12'
 gem 'lean_interactor'
 gem 'lograge', '~> 0.14.0'
 gem 'mysql2', '~> 0.5'
-gem 'opentelemetry-exporter-otlp', '~> 0.29.1', require: false
-gem 'opentelemetry-instrumentation-action_view', '~> 0.8.0', require: false
-gem 'opentelemetry-instrumentation-active_record', '~> 0.8.1', require: false
-gem 'opentelemetry-instrumentation-mysql2', '~> 0.28.0', require: false
-gem 'opentelemetry-exporter-otlp-metrics', '~> 0.2.1', require: false
-gem 'opentelemetry-instrumentation-rack', '~> 0.25.0', require: false
-gem 'opentelemetry-instrumentation-rails', '~> 0.34.0', require: false
-gem 'opentelemetry-metrics-sdk', '~> 0.3.0', require: false
+gem 'opentelemetry-exporter-otlp', '~> 0.29', require: false
+gem 'opentelemetry-exporter-otlp-metrics', '~> 0.2', require: false
+gem 'opentelemetry-instrumentation-action_view', '~> 0.8', require: false
+gem 'opentelemetry-instrumentation-active_record', '~> 0.8', require: false
+gem 'opentelemetry-instrumentation-http', '~> 0.24', require: false
+gem 'opentelemetry-instrumentation-mysql2', '~> 0.28', require: false
+gem 'opentelemetry-instrumentation-net_http', '~> 0.23', require: false
+gem 'opentelemetry-instrumentation-rack', '~> 0.25', require: false
+gem 'opentelemetry-instrumentation-rails', '~> 0.34', require: false
+gem 'opentelemetry-metrics-sdk', '~> 0.5', require: false
 gem 'opentelemetry-sdk', '~> 1.6', require: false
 gem 'ostruct', '~> 0.6.1'
 gem 'puma', '~> 6.4'
