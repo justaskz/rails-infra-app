@@ -1,4 +1,5 @@
 * TASKS
+  [ ] Add log level to the logs
   [ ] Fix github build (now building all targets)
   [ ] Try ruby slim
   [ ] Find a way to set counter to 0 (check how other exporters is doing that)
