@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     resources :stats, only: [:index]
   end
 
+  namespace :distributed_echo_app do
+    resources :messages, only: [:index]
+  end
+
   mount Sidekiq::Web => '/sidekiq'
   mount Yabeda::Prometheus::Exporter, at: '/metrics'
 end

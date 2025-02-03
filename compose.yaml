@@ -75,3 +75,8 @@ volumes:
   redis:
   mysql:
   cassandra:
+
+networks:
+  default:
+    name: infranet
+    external: true
