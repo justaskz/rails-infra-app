@@ -10,6 +10,7 @@ gem 'opentelemetry-exporter-otlp', '~> 0.29', require: false
 gem 'opentelemetry-exporter-otlp-metrics', '~> 0.2', require: false
 gem 'opentelemetry-instrumentation-action_view', '~> 0.8', require: false
 gem 'opentelemetry-instrumentation-active_record', '~> 0.8', require: false
+gem 'opentelemetry-instrumentation-faraday', '~> 0.24'
 gem 'opentelemetry-instrumentation-mysql2', '~> 0.28', require: false
 gem 'opentelemetry-instrumentation-net_http', '~> 0.23', require: false
 gem 'opentelemetry-instrumentation-rack', '~> 0.25', require: false

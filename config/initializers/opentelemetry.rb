@@ -7,6 +7,7 @@ require 'opentelemetry-api'
 require 'opentelemetry-exporter-otlp'
 require 'opentelemetry-instrumentation-action_view'
 require 'opentelemetry-instrumentation-active_record'
+require 'opentelemetry-instrumentation-faraday'
 require 'opentelemetry-instrumentation-mysql2'
 require 'opentelemetry-instrumentation-net_http'
 require 'opentelemetry-instrumentation-rack'
@@ -24,4 +25,5 @@ OpenTelemetry::SDK.configure do |config|
   config.use 'OpenTelemetry::Instrumentation::ActiveRecord'
   config.use 'OpenTelemetry::Instrumentation::Mysql2'
   config.use 'OpenTelemetry::Instrumentation::Net::HTTP'
+  config.use 'OpenTelemetry::Instrumentation::Faraday'
 end
