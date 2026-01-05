@@ -1,13 +1,13 @@
 <%= render("shared/menu") %>
 
 <div style="margin-bottom: 10px">
-  <div style="display: inline-block;">
+  <div style="display: inline-block">
     <%= form_with(url: workers_path(job_type: CrudApp::Worker::CREATE)) do %>
       <%= submit_tag 'Spawn Creator' %>
     <% end %>
   </div>
 
-  <div style="display: inline-block;">
+  <div style="display: inline-block">
     <%= form_with(url: workers_path(job_type: CrudApp::Worker::UPDATE)) do %>
       <%= submit_tag 'Spawn Updator' %>
     <% end %>
@@ -24,8 +24,17 @@
   <% end %>
 
   <% @workers.each do |worker| %>
-    <span><%= worker.id %></span>
-    <span><%= worker.job_type %></span>
-    <span><%= button_to('Delete', worker_path(worker), method: :delete) %></span>
+    <div>
+      <div style="display: inline-block"><%= worker.id %></div>
+      <div style="display: inline-block"><%= worker.job_type %></div>
+
+      <% if worker.is_running.zero? %>
+        <div style="display: inline-block"><%= button_to('Start', worker_path(worker, is_running: 1, job_type: worker.job_type), method: :patch) %></div>
+      <% else %>
+        <div style="display: inline-block"><%= button_to('Stop', worker_path(worker, is_running: 0, job_type: worker.job_type), method: :patch) %></div>
+      <% end %>
+
+      <div style="display: inline-block"><%= button_to('Delete', worker_path(worker), method: :delete) %></div>
+    </div>
   <% end %>
 </div>

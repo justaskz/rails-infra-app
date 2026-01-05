@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   scope module: 'crud_app' do
     resources :stats, only: [:index]
-    resources :workers, only: [:create, :destroy]
+    resources :workers, only: [:create, :update, :destroy]
   end
 
   mount Sidekiq::Web => '/sidekiq'

@@ -1,35 +1,21 @@
-module CrudApp::Workers::Worker
-  def self.included(base)
-    base.extend(ClassMethods)
-    base.include(InstanceMethods)
-  end
+class CrudApp::Workers::Worker
+  include Sidekiq::Worker
 
-  module ClassMethods
-    def run(job_type)
-      worker_id = nil
-      perform_async(worker_id, job_type)
+  def perform(worker_id, job_type)
+    return unless worker_id || job_type
 
-      true
-    end
-  end
+    worker = CrudApp::Worker.find_by(id: worker_id)
+    return false unless worker&.running?
 
-  module InstanceMethods
-    def perform(worker_id, job_type)
-      worker = spawn_worker(job_type) if worker_id.nil?
-      worker = CrudApp::Worker.find_by(id: worker_id) if worker_id
-      return false unless worker&.running?
-
-      @worker_id = worker.id
-
-      process(job_type)
-
-      self.class.perform_async(@worker_id, job_type)
-
-      true
+    case job_type
+    when CrudApp::Worker::CREATE then CrudApp::Records::Create.for(worker_id)
+    when CrudApp::Worker::UPDATE then CrudApp::Records::Update.for(worker_id)
+    # when :delete then CrudApp::Records::Delete.for(worker_id)
+    else return false
     end
 
-    def spawn_worker(job_type)
-      CrudApp::Worker.create(job_type: job_type, is_running: true)
-    end
+    self.class.perform_async(worker_id, job_type)
+
+    true
   end
 end

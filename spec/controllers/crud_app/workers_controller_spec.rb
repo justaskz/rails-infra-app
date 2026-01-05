@@ -11,6 +11,17 @@ RSpec.describe CrudApp::WorkersController do
     end
   end
 
+  describe '#update' do
+    subject { patch(:update, params: params) }
+
+    let(:params) { { id: 1 } }
+
+    specify do
+      expect(CrudApp::Workers::Update).to receive(:for).with('1')
+      expect(subject).to redirect_to(stats_path)
+    end
+  end
+
   describe '#destroy' do
     subject { delete(:destroy, params: { id: worker_id }) }
 

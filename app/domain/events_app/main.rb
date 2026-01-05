@@ -1,13 +1,18 @@
 class EventsApp::Main
   def self.produce
-    kafka = Kafka.new(['node1:9092'], client_id: 'infra-test-app')
-
-    kafka.deliver_message('Hello, World!', topic: 'messages')
   end
 
   def self.consume
-    kafka = Kafka.new(['node1:9092'], client_id: 'infra-test-app')
+    config = {
+      :'bootstrap.servers' => ENV.fetch('KAFKA_BOOTSTRAP_NODES', '127.0.0.1:9092'),
+      :'group.id' => 'ruby-test',
+    }
 
-    kafka.each_message(topic: 'messages') { |message| puts message.offset, message.key, message.value }
+    consumer = Rdkafka::Config.new(config).consumer
+    consumer.subscribe('test')
+
+    consumer.each do |message|
+      puts "Message received: #{message}"
+    end
   end
 end

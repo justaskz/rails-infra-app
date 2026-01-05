@@ -1,6 +1,14 @@
 class CrudApp::WorkersController < ApplicationController
   def create
-    CrudApp::Workers::Create.run(job_type)
+    worker = CrudApp::Workers::Create.run(job_type)
+    CrudApp::Workers::Worker.perform_async(worker.id, job_type)
+
+    redirect_to(stats_path)
+  end
+
+  def update
+    CrudApp::Workers::Update.for(worker_id)
+    CrudApp::Workers::Worker.perform_async(worker_id, job_type)
 
     redirect_to(stats_path)
   end
