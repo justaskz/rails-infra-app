@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bootsnap', '~> 1.7', require: false
 gem 'cassandra-driver', '~> 3.2'
-gem 'faraday', '~> 2.12'
+gem 'faraday', '~> 2.14'
 gem 'lean_interactor'
 gem 'lograge', '~> 0.14.0'
 gem 'mysql2', '~> 0.5'
